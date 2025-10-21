@@ -19,8 +19,8 @@ const users = [
     // Usuario de prueba pre-registrado: password cifrado de 'password123'
     { 
         id: 1, 
-        email: "test@example.com", 
-        password: "$2a$10$e9eR2l7RzJ/k/T/g9z.1lO.mP1UvE7fB9R4wZ9f0A.A/lYg/p2O" // Reemplaza con una contraseña cifrada real o implementa una ruta de registro.
+        email: "Martin123@ymail.com", 
+        password: "123456" // Reemplaza con una contraseña cifrada real o implementa una ruta de registro.
     }
 ];
 

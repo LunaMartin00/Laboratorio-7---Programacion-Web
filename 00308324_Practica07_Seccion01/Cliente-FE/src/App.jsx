@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Login from "./Login";
+import Protected from "./Protected";
 
-function App() {
-  const [count, setCount] = useState(0)
+// Función para simular el cierre de sesión
+const handleLogout = () => {
+    localStorage.removeItem("token");
+    alert("Sesión cerrada.");
+};
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+const App = () => (
+    <Router>
+        <nav style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>
+            <Link to="/login" style={{ marginRight: '15px' }}>Login</Link>
+            <Link to="/protected" style={{ marginRight: '15px' }}>Protegido</Link>
+            <button onClick={handleLogout}>Cerrar Sesión</button>
+        </nav>
 
-export default App
+        <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/protected" element={<Protected />} />
+            {/* Ruta por defecto o de inicio */}
+            <Route path="/" element={<h1>Bienvenido. Por favor, inicie sesión.</h1>} />
+        </Routes>
+    </Router>
+);
+
+export default App;
